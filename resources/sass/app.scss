@@ -1,0 +1,24 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@each $color, $value in $theme-colors {
+    .table .thead-#{$color} th {
+        color: #ffffff;
+        background-color: $value;
+        border-color: darken($value, 10);
+    }
+}
+
+.input-group-text > .fas {
+    width: 14.4px !important;
+}

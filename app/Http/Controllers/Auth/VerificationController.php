@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\VerifiesEmails;
+
+class VerificationController extends Controller
+{
+    use VerifiesEmails;
+
+    protected string $redirectTo = ApplicationController::redirectToAfterLogin;
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('signed')->only('verify');
+        $this->middleware('throttle:6,1')->only('verify', 'resend');
+    }
+}
